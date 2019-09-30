@@ -35,7 +35,7 @@ def fetch(query, sort='modifiedTime desc'):
 	http = creds.authorize(httplib2.Http())
 	service = discovery.build('drive', 'v3', http=http)
 	results = service.files().list(
-		q=query,orderBy=sort,pageSize=10,fields="nextPageToken, files(id, name)").execute()
+		q=query,orderBy=sort,pageSize=50,fields="nextPageToken, files(id, name)").execute()
 	items = results.get('files', [])
 	return items
 
